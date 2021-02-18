@@ -19,34 +19,47 @@ body {
   width: 300px;
 }
 
-.controlPanel .name,
 .clockPanel .title {
   font-size: 50px;
-  margin: 10px;
+  margin: 0;
 }
 
-.controlPanel .controlBtn .btn,
-.clockPanel .controlBtn .btn {
-  font-size: 20px;
+.controlPanel .controlBtn .btn {
+  font-size: 15px;
   color: #fff;
   margin: 15px;
-  padding: 12px;
+  padding: 10px;
   outline: none;
   box-shadow: none;
   display: grid;
   place-content: center;
   border: none;
 }
-
+.clockPanel .controlBtn2 .btn {
+  font-size: 35px;
+  color: #fff;
+  margin: 10px 25px;
+  padding: 15px;
+  outline: none;
+  box-shadow: none;
+  display: grid;
+  place-content: center;
+  border: none;
+}
 .controlPanel .controlBtn .btn:active,
-.clockPanel .controlBtn .btn:active {
+.clockPanel .controlBtn2 .btn:active {
   transform: scale(0.9);
   opacity: 0.7;
 }
 
-.controlPanel .controlBtn .time,
-.clockPanel .time {
+.controlPanel .controlBtn .time {
   padding: 0 10px;
-  font-size: 60px;
-  margin: 0;
+  font-size: 50px;
+  margin: 0 10px;
+  width: 80px;
+}
+
+.clockPanel .time {
+  font-size: 100px;
+  margin: 10px;
 }
