@@ -8,7 +8,14 @@ class Clock extends Component {
     this.state = {
       BreakLength: 5,
       SessionLength: 25,
+      ClockTime: 25 * 60,
+      ClockTitle: "Session Title",
     };
+  }
+  handleConvert(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
   }
   render() {
     const Break = {
@@ -43,7 +50,12 @@ class Clock extends Component {
             </div>
           </div>
           <div className="card-body">
-            <ClockPanel />
+            <ClockPanel
+              ClockTitle={this.state.ClockTitle}
+              ClockTime={this.handleConvert(this.state.ClockTime)}
+              handleResumePause={this.handleResumePause}
+              handleReset={this.handleReset}
+            />
           </div>
         </div>
       </div>
