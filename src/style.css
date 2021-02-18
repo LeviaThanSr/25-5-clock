@@ -1,10 +1,47 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.controlPanel {
+  margin: 30px;
+  width: 300px;
+}
+
+.controlPanel .name {
+  font-size: 50px;
+  margin: 10px;
+}
+
+.controlPanel .controlBtn .btn {
+  font-size: 20px;
+  color: #fff;
+  margin: 15px;
+  padding: 12px;
+  outline: none;
+  box-shadow: none;
+  display: grid;
+  place-content: center;
+}
+
+.controlPanel .controlBtn .btn:active {
+  transform: scale(0.9);
+  opacity: 0.7;
+}
+
+.controlPanel .controlBtn .time {
+  padding: 0 10px;
+  font-size: 60px;
+  margin: 0;
 }
