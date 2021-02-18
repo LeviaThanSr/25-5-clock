@@ -4,9 +4,9 @@ class ClockPanel extends Component {
   render() {
     return (
       <div className="clockPanel text-center">
-        <h1 className="title">Session</h1>
-        <h3 className="time">25:00</h3>
-        <div className="controlBtn d-flex justify-content-center align-items-center">
+        <h1 className="title">{this.props.ClockTitle}</h1>
+        <h3 className="time">{this.props.ClockTime}</h3>
+        <div className="controlBtn2 d-flex justify-content-center align-items-center">
           <div
             className="btn btn-primary"
             onClick={this.props.handleResumePause}
