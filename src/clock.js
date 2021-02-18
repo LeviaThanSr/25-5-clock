@@ -1,17 +1,25 @@
 import React, { Component } from "react";
 import BreakPanel from "./BreakPanel";
 import SessionPanel from "./SessionPanel";
+import ClockPanel from "./ClockPanel";
 class Clock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      BreakLength: 5,
+      SessionLength: 25,
+    };
+  }
   render() {
     const Break = {
       name: "Break Time",
-      time: 5,
+      time: this.state.BreakLength,
       handleIncrement: this.handleBreakIncrement,
       handleDecrement: this.handleBreakDecrement,
     };
     const Session = {
       name: "Study Time",
-      time: 25,
+      time: this.state.SessionLength,
       handleIncrement: this.handleSessionIncrement,
       handleDecrement: this.handleSessionDecrement,
     };
@@ -35,7 +43,7 @@ class Clock extends Component {
             </div>
           </div>
           <div className="card-body">
-            <div>Clock body</div>
+            <ClockPanel />
           </div>
         </div>
       </div>
