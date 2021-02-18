@@ -10,7 +10,7 @@ class SessionPanel extends Component {
             <i className="fas fa-minus" />
           </div>
           <h3 className="time">{this.props.time}</h3>
-          <div className="btn btn-success" onClick={this.props.handleIncrement}>
+          <div className="btn btn-primary" onClick={this.props.handleIncrement}>
             <i className="fas fa-plus" />
           </div>
         </div>
