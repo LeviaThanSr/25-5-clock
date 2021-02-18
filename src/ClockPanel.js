@@ -14,7 +14,7 @@ class ClockPanel extends Component {
             <i className="fas fa-play" />
           </div>
 
-          <div className="btn btn-danger" onClick={this.props.handleReset}>
+          <div className="btn btn-warning" onClick={this.props.handleReset}>
             <i className="fas fa-undo" />
           </div>
         </div>
