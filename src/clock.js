@@ -12,7 +12,7 @@ class Clock extends Component {
       BreakLength: 5,
       SessionLength: 25,
       ClockTime: 1500,
-      ClockTitle: "Session",
+      ClockTitle: "Study Time",
       isOn: false,
     };
     this.handleReset = this.handleReset.bind(this);
@@ -26,14 +26,16 @@ class Clock extends Component {
   handleConvert(time) {
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
-    return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+    return `${minutes < 10 ? "0" + minutes : minutes}:${
+      seconds < 10 ? "0" + seconds : seconds
+    }`;
   }
   handleReset() {
     this.setState({
       BreakLength: 5,
       SessionLength: 25,
       ClockTime: 1500,
-      ClockTitle: "Session",
+      ClockTitle: "Study Time",
       isOn: false,
     });
     clearInterval(this.counter);
@@ -49,9 +51,11 @@ class Clock extends Component {
         if (this.state.ClockTime === 0) {
           this.setState({
             ClockTitle:
-              this.state.ClockTitle === "Session" ? "Break" : "Session",
+              this.state.ClockTitle === "Study Time"
+                ? "Break Time"
+                : "Study Time",
             ClockTime:
-              this.state.ClockTitle === "Session"
+              this.state.ClockTitle === "Study Time"
                 ? this.state.BreakLength * 60
                 : this.state.SessionLength * 60,
           });
@@ -102,13 +106,13 @@ class Clock extends Component {
   }
   render() {
     const Break = {
-      name: "Break Time",
+      name: "Break Length",
       time: this.state.BreakLength,
       handleIncrement: this.handleBreakIncrement,
       handleDecrement: this.handleBreakDecrement,
     };
     const Session = {
-      name: "Study Time",
+      name: "Study Length",
       time: this.state.SessionLength,
       handleIncrement: this.handleSessionIncrement,
       handleDecrement: this.handleSessionDecrement,
