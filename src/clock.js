@@ -15,6 +15,7 @@ class Clock extends Component {
       ClockTitle: "Study Time",
       isOn: false,
     };
+
     this.handleReset = this.handleReset.bind(this);
     this.handleResumePause = this.handleResumePause.bind(this);
     this.handleBreakIncrement = this.handleBreakIncrement.bind(this);
@@ -30,6 +31,7 @@ class Clock extends Component {
       seconds < 10 ? "0" + seconds : seconds
     }`;
   }
+
   handleReset() {
     this.setState({
       BreakLength: 5,
@@ -38,13 +40,15 @@ class Clock extends Component {
       ClockTitle: "Study Time",
       isOn: false,
     });
-    clearInterval(this.counter);
     beep.pause();
     beep.currentTime = 0;
+    clearInterval(this.counter);
   }
+
   componentWillUnmount() {
     clearInterval(this.counter);
   }
+
   handleResumePause() {
     if (!this.state.isOn) {
       this.counter = setInterval(() => {
@@ -76,34 +80,83 @@ class Clock extends Component {
       });
     }
   }
+
   handleBreakIncrement() {
     if (this.state.BreakLength <= 59) {
-      this.setState({
-        BreakLength: this.state.BreakLength + 1,
-      });
+      if (!this.state.isOn && this.state.ClockTitle === "Break Time") {
+        this.setState({
+          BreakLength: this.state.BreakLength + 1,
+          ClockTime: (this.state.BreakLength + 1) * 60,
+        });
+      } else if (this.state.isOn) {
+        this.setState({
+          BreakLength: this.state.BreakLength,
+        });
+      } else {
+        this.setState({
+          BreakLength: this.state.BreakLength + 1,
+        });
+      }
     }
   }
+
   handleBreakDecrement() {
     if (this.state.BreakLength > 1) {
-      this.setState({
-        BreakLength: this.state.BreakLength - 1,
-      });
+      if (!this.state.isOn && this.state.ClockTitle === "Break Time") {
+        this.setState({
+          BreakLength: this.state.BreakLength - 1,
+          ClockTime: (this.state.BreakLength - 1) * 60,
+        });
+      } else if (this.state.isOn) {
+        this.setState({
+          BreakLength: this.state.BreakLength,
+        });
+      } else {
+        this.setState({
+          BreakLength: this.state.BreakLength - 1,
+        });
+      }
     }
   }
+
   handleSessionIncrement() {
     if (this.state.SessionLength <= 59) {
-      this.setState({
-        SessionLength: this.state.SessionLength + 1,
-      });
+      if (!this.state.isOn && this.state.ClockTitle === "Study Time") {
+        this.setState({
+          SessionLength: this.state.SessionLength + 1,
+          ClockTime: (this.state.SessionLength + 1) * 60,
+        });
+      } else if (this.state.isOn) {
+        this.setState({
+          SessionLength: this.state.SessionLength,
+        });
+      } else {
+        this.setState({
+          SessionLength: this.state.SessionLength + 1,
+        });
+      }
     }
   }
+
   handleSessionDecrement() {
     if (this.state.SessionLength > 1) {
-      this.setState({
-        SessionLength: this.state.SessionLength - 1,
-      });
+      if (!this.state.isOn && this.state.ClockTitle === "Study Time") {
+        this.setState({
+          SessionLength: this.state.SessionLength - 1,
+          ClockTime: (this.state.SessionLength - 1) * 60,
+        });
+      } else if (this.state.isOn) {
+        this.setState({
+          SessionLength: this.state.SessionLength,
+        });
+      } else {
+        this.setState({
+          SessionLength: this.state.SessionLength - 1,
+        });
+      }
     }
   }
+
   render() {
     const Break = {
       name: "Break Length",
@@ -111,24 +164,28 @@ class Clock extends Component {
       handleIncrement: this.handleBreakIncrement,
       handleDecrement: this.handleBreakDecrement,
     };
+
     const Session = {
       name: "Study Length",
       time: this.state.SessionLength,
       handleIncrement: this.handleSessionIncrement,
       handleDecrement: this.handleSessionDecrement,
     };
+
     const Clock = {
       ClockTitle: this.state.ClockTitle,
       ClockTime: this.handleConvert(this.state.ClockTime),
       handleResumePause: this.handleResumePause,
       handleReset: this.handleReset,
       isOn: this.state.isOn,
+      isItLessThanOne: this.state.ClockTime,
     };
+
     return (
-      <div>
+      <div className="div">
         <div className="card shadow rounded">
           <div className="card-header">
-            <div className="d-flex justify-content-center align-items-center">
+            <div className="flex d-flex justify-content-center align-items-center">
               <BreakPanel {...Break} />
               <SessionPanel {...Session} />
             </div>
