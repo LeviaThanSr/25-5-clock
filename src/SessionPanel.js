@@ -8,11 +8,21 @@ class SessionPanel extends Component {
           {this.props.name}
         </h1>
         <div className="controlBtn  d-flex justify-content-center align-items-center">
-          <div className="btn btn-danger" onClick={this.props.handleDecrement}>
+          <div
+            className="btn btn-danger"
+            id="session-decrement"
+            onClick={this.props.handleDecrement}
+          >
             <i className="fas fa-minus" />
           </div>
-          <h3 className="time">{this.props.time}</h3>
-          <div className="btn btn-primary" onClick={this.props.handleIncrement}>
+          <h3 className="time" id="session-length">
+            {this.props.time}
+          </h3>
+          <div
+            className="btn btn-primary"
+            id="session-increment"
+            onClick={this.props.handleIncrement}
+          >
             <i className="fas fa-plus" />
           </div>
         </div>
