@@ -48,7 +48,7 @@ body {
 }
 .controlPanel .controlBtn .btn:active,
 .clockPanel .controlBtn2 .btn:active {
-  transform: scale(0.9);
+  transform: scale(0.98);
   opacity: 0.7;
 }
 
