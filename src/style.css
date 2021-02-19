@@ -63,3 +63,57 @@ body {
   font-size: 100px;
   margin: 10px;
 }
+
+@media only screen and (min-width: 250px) and (max-width: 375px) {
+  .flex {
+    flex-direction: column;
+  }
+  .controlPanel {
+    margin: 10px;
+    width: 200px;
+  }
+
+  .clockPanel .title {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .controlPanel .controlBtn .time {
+    min-width: 80px;
+  }
+
+  .clockPanel .time {
+    font-size: 80px;
+    margin: 10px;
+  }
+  .card {
+    max-width: 370px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 570px) {
+  .card {
+    width: 350px;
+  }
+  .flex {
+    flex-direction: column;
+  }
+  .controlPanel {
+    margin: 10px;
+    width: 200px;
+  }
+
+  .clockPanel .title {
+    font-size: 30px;
+    margin: 0;
+  }
+
+  .controlPanel .controlBtn .time {
+    min-width: 80px;
+  }
+
+  .clockPanel .time {
+    font-size: 80px;
+    margin: 10px;
+  }
+}
