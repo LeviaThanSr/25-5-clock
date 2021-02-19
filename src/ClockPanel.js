@@ -11,7 +11,7 @@ class ClockPanel extends Component {
             className="btn btn-primary"
             onClick={this.props.handleResumePause}
           >
-            <i className="fas fa-play" />
+            <i className={`fas fa-${this.props.isOn ? "pause" : "play"}`} />
           </div>
 
           <div className="btn btn-warning" onClick={this.props.handleReset}>
