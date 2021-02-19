@@ -28,7 +28,7 @@ class ClockPanel extends Component {
         </h3>
         <div className="controlBtn2 d-flex justify-content-center align-items-center">
           <div
-            className="btn btn-primary"
+            className={`btn btn-${isOn ? "secondary" : "primary"}`}
             id="start_stop"
             onClick={handleResumePause}
           >
